@@ -1,78 +1,94 @@
-# SponsorLocal MVP
+# EventFloX MVP
 
-SponsorLocal is a Next.js + Supabase + Stripe MVP for a Local Community Sponsorship Marketplace. It helps organizers publish sponsor-ready events and helps sponsors discover, message, and purchase local sponsorship packages.
+EventFloX is an AI-powered local business growth platform that helps local businesses turn community events into real customers.
+
+The product is no longer positioned as an event sponsorship marketplace. The MVP focuses on three core jobs:
+
+1. Discover nearby community events
+2. Launch coupon campaigns
+3. Track real customer visits and redemptions
+
+Tagline: **Turn Local Events Into Real Customers**
+
+## Product Direction
+
+EventFloX is for restaurants, coffee shops, camps, clinics, tutoring centers, studios, and local service businesses that want measurable customer acquisition through community engagement.
+
+Businesses join for free. There are no monthly fees, no subscription tiers, and no upfront costs. EventFloX earns revenue only when coupons are redeemed or qualified leads are generated.
+
+Think: Google Ads for local community events.
+
+Not: Eventbrite for sponsorships.
 
 ## Included
 
-- Premium responsive marketplace UI with Tailwind CSS
-- Homepage, event list, event detail, create event flow
-- Sponsor dashboard, organizer dashboard, admin review console
-- Proof-of-exposure page with voucher-oriented fulfillment
-- Next.js API routes for checkout, inquiries, AI prospectus, vouchers, and proof submission
-- Supabase schema and demo seed data
-- Stripe Checkout integration with a no-key demo fallback
+- Modern responsive homepage for the EventFloX repositioning
+- AI-style local opportunity finder preview
+- Example match flow for a local business
+- Coupon campaign preview with QR/redemption framing
+- ROI dashboard preview with distributed, claimed, redeemed, redemption rate, and estimated new customer metrics
+- Organizer-facing value story for bringing local perks to attendees
+- Free beta and pay-for-results business model messaging
 
-## Page Structure
+## Homepage Structure
 
-- `/` - landing page and marketplace value story
-- `/events` - searchable event discovery feed
-- `/events/[id]` - event details and sponsorship package purchase
-- `/create-event` - organizer event creation and AI package drafting UI
-- `/sponsor` - sponsor dashboard for saved events, messages, and purchases
-- `/organizer` - organizer dashboard for events, inquiries, and sponsorship revenue
-- `/admin` - admin review queue for events and packages
-- `/proof` - proof upload and voucher fulfillment workflow
+- Hero: Turn Local Events Into Real Customers
+- How it works: business profile, event matching, coupon/result tracking
+- Example match: New Bubble Tea Shop in Hoboken, NJ
+- For businesses: acquire customers through nearby community events
+- For organizers: bring local perks to attendees and create measurable partner value
+- ROI dashboard preview: coupon distribution, claims, redemptions, and new customers
+- Pricing model: free to join, no monthly fees, pay when customers show up
+- Final CTA: Start With Your ZIP Code
 
-## Database
+## Core MVP Data
 
-Run these files in Supabase SQL editor:
+Businesses enter:
 
-1. `supabase/schema.sql`
-2. `supabase/seed.sql`
+- ZIP Code
+- Business Category
+- Target Audience
 
-The schema includes:
+EventFloX recommends:
 
-- `users`
-- `organizer_profiles`
-- `sponsor_profiles`
-- `events`
-- `sponsorship_packages`
-- `inquiries`
-- `orders`
-- `messages`
-- `reviews`
-- `categories`
-- `locations`
-- `vouchers`
-- `proof_submissions`
+- Nearby community events
+- School events
+- Family events
+- Cultural events
+- Festivals
+- Local organizations
 
-It also includes a `nearby_events(lat, lng, radius_miles)` function using PostGIS for distance-based discovery.
+Campaign types include:
 
-## API Routes
+- Buy One Get One
+- Free Consultation
+- First Visit Discount
+- Trial Class
+- Family Discount
+- Gift Cards
 
-- `POST /api/orders/checkout` - creates a Stripe Checkout session for a sponsorship package
-- `POST /api/sponsorships/apply` - locks a package slot before payment
-- `POST /api/inquiries` - creates a sponsor inquiry
-- `POST /api/ai/prospectus` - returns AI-style prospectus copy and package suggestions
-- `POST /api/sponsorships/voucher` - issues a demo digital voucher code
-- `POST /api/sponsorships/verify-proof` - accepts proof photo and social link metadata
+Example ROI metrics:
+
+- Coupons Distributed: 120
+- Coupons Claimed: 68
+- Coupons Redeemed: 21
+- Redemption Rate: 31%
+- Estimated New Customers: 18
 
 ## Local Setup
 
 ```bash
 npm install
-cp .env.example .env.local
 npm run dev
 ```
 
 Open `http://localhost:3000`.
 
-Stripe is optional for demo mode. Without `STRIPE_SECRET_KEY`, checkout returns a JSON demo order instead of redirecting to Stripe.
-
 ## Next Steps
 
-- Connect Supabase Auth and row-level security policies
-- Replace mock event reads with Supabase queries
-- Add Stripe webhooks for paid order fulfillment and voucher issuance
-- Add file storage for proof photos
-- Add real AI provider calls for prospectus generation and sponsor recommendations
+- Build the ZIP/category/audience intake form
+- Add real event ingestion and matching logic
+- Generate coupon codes and QR codes per campaign
+- Track coupon claims and redemptions
+- Add lead qualification for high-value local service businesses
+- Replace demo metrics with persisted campaign analytics
