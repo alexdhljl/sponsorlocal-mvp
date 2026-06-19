@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SponsorLocal",
-  description: "Local community sponsorship marketplace for events and sponsors."
+  title: "EventFloX | Turn Local Events Into Real Customers",
+  description:
+    "EventFloX helps local businesses discover nearby community events, launch coupon campaigns, and track real customer visits."
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
