@@ -1,117 +1,225 @@
-const events = [
+import { ArrowRight, BarChart3, CheckCircle2, MapPin, QrCode, Search, Sparkles, Store, TicketPercent, Users } from "lucide-react";
+
+const recommendedEvents = [
   {
-    tone: "one",
-    category: "Community",
-    distance: "1.8 mi",
-    title: "Riverside Sunday 5K Club",
-    organizer: "Northbank Run Collective",
-    attendees: "85 attendees",
-    date: "Jul 12",
-    city: "Austin",
-    price: "$50",
-    copy: "A casual neighborhood run with a post-run hangout and shareable sponsor moments.",
-    insights: { score: 88, traffic: "12-20", redemption: 31 }
+    name: "Chinese School Open House",
+    type: "School",
+    distance: "1.4 mi",
+    audience: "Families with children",
+    match: 95,
+    campaign: "Buy One Get One Free"
   },
   {
-    tone: "two",
-    category: "School",
-    distance: "3.2 mi",
-    title: "Maple Elementary Maker Fair",
-    organizer: "Maple PTA",
-    attendees: "220 attendees",
-    date: "Aug 3",
-    city: "Denver",
-    price: "$300",
-    copy: "Student demos, robotics tables, family bags, and trusted school community exposure.",
-    insights: { score: 92, traffic: "15-25", redemption: 35 }
+    name: "Family Picnic",
+    type: "Community",
+    distance: "2.1 mi",
+    audience: "Local parents",
+    match: 88,
+    campaign: "First Visit Discount"
   },
   {
-    tone: "three",
-    category: "Culture",
-    distance: "4.6 mi",
-    title: "Little Havana Culture Night",
-    organizer: "Calle Ocho Arts Circle",
-    attendees: "140 attendees",
-    date: "Jul 24",
-    city: "Miami",
-    price: "$150",
-    copy: "Outdoor performers, food vendors, community art tables, and high-energy social content.",
-    insights: { score: 90, traffic: "18-28", redemption: 38 }
+    name: "Youth Sports Day",
+    type: "Sports",
+    distance: "3.8 mi",
+    audience: "Active families",
+    match: 82,
+    campaign: "Trial Class"
   }
 ];
 
-const detailInsights = {
-  sponsorScore: 92,
-  couponRedemptionRate: 35,
-  avgSponsorTraffic: "15-25",
-  avgAttendance: 320,
-  couponClaims: 75,
-  pastSponsorCount: 12,
-  repeatSponsorRate: 68,
-  categories: ["Restaurants", "Tutoring Centers", "Dental Clinics", "Real Estate Agents", "Local Services"]
-};
+const couponIdeas = ["Buy One Get One", "Free Consultation", "First Visit Discount", "Trial Class", "Family Discount", "Gift Cards"];
+
+const roiMetrics = [
+  { label: "Distributed", value: "120" },
+  { label: "Claimed", value: "68" },
+  { label: "Redeemed", value: "21" },
+  { label: "Redemption Rate", value: "31%" },
+  { label: "New Customers", value: "18" }
+];
+
+const successFees = [
+  { business: "Restaurant", fee: "$0.50-$1", basis: "per redeemed coupon" },
+  { business: "Coffee Shop", fee: "$0.50-$1", basis: "per redeemed coupon" },
+  { business: "Summer Camp", fee: "$2-$5", basis: "per redeemed coupon" },
+  { business: "Pediatric Dentist", fee: "$10-$20", basis: "per qualified lead" }
+];
 
 export default function Home() {
   return (
     <main>
       <header className="top">
         <nav className="shell nav">
-          <a className="brand" href="#"><span className="logo">SL</span>SponsorLocal</a>
+          <a className="brand" href="#"><span className="logo">EFX</span>EventFloX</a>
           <div className="links">
-            <a href="#events">Explore</a><a href="#insights">Insights</a><a href="#dashboards">Dashboards</a><a href="#proof">Proof</a>
+            <a href="#how">How it works</a>
+            <a href="#match">Example match</a>
+            <a href="#dashboard">Results</a>
+            <a href="#pricing">Pricing</a>
           </div>
-          <a className="btn primary" href="#events">Find matches</a>
+          <a className="btn primary" href="#start"><Search size={17} />Find Local Opportunities</a>
         </nav>
       </header>
 
-      <div className="shell hero">
-        <div>
-          <span className="badge">Measurable Local Sponsorship Marketplace</span>
-          <h1>Sponsor local events with measurable results.</h1>
-          <p className="lead">SponsorLocal helps brands, local shops, schools, nonprofits, and organizers turn small community moments into measurable sponsorship opportunities, with performance signals that feel closer to buying neighborhood ads.</p>
-          <div className="actions"><a className="btn primary" href="#events">Explore events</a><a className="btn secondary" href="#insights">View performance data</a></div>
-          <div className="metrics"><div className="metric"><strong>92</strong><span>Top Sponsor Score</span></div><div className="metric"><strong>35%</strong><span>Coupon redemption</span></div><div className="metric"><strong>15-25</strong><span>Estimated visits</span></div></div>
-        </div>
-        <div className="showcase">
-          <div className="card listing">
-            <div className="photo"><div className="pills"><span className="badge">School</span><span className="badge">3.2 mi</span></div><div className="photoText"><h2>Maple Elementary Maker Fair</h2><p>Maple PTA · 220 attendees · Denver, CO</p></div></div>
-            <div className="features"><div className="feature"><span>92</span>Sponsor Score</div><div className="feature"><span>35%</span>Redemption</div><div className="feature"><span>15-25</span>Visits</div></div>
+      <section className="shell hero">
+        <div className="heroCopy">
+          <span className="badge"><Sparkles size={15} />AI-powered local business growth platform</span>
+          <h1>Turn Local Events Into Real Customers</h1>
+          <p className="lead">EventFloX helps local businesses discover nearby community events, launch coupon campaigns, and generate measurable customer visits.</p>
+          <div className="actions">
+            <a className="btn primary" href="#start"><MapPin size={18} />Find Local Opportunities</a>
+            <a className="btn secondary" href="#organizers"><Users size={18} />Join as an Organizer</a>
+          </div>
+          <div className="trustStrip">
+            <span><CheckCircle2 size={16} />Free to join</span>
+            <span><CheckCircle2 size={16} />No monthly fees</span>
+            <span><CheckCircle2 size={16} />Pay when customers show up</span>
           </div>
         </div>
-      </div>
 
-      <section id="events" className="shell">
-        <div className="sectionTitle"><div className="eyebrow">Explore</div><h3>Find sponsor-ready local events</h3><p>Browse nearby opportunities with compact performance signals, so sponsors can quickly judge whether an event is worth backing.</p></div>
-        <div className="grid3">
-          {events.map((event) => (
-            <article className="card eventCard" key={event.title}>
-              <div className={`eventImg ${event.tone}`}><div className="pills"><span className="badge">{event.category}</span><span className="badge">{event.distance}</span></div><div className="eventTitle"><h4>{event.title}</h4><small>{event.organizer}</small></div></div>
-              <div className="eventBody"><div className="eventMeta"><span>{event.attendees}</span><span>{event.date}</span><span>{event.city}</span></div><p>{event.copy}</p><div className="miniInsights"><div className="mini dark"><b>{event.insights.score}/100</b><span>Sponsor Score</span></div><div className="mini"><b>{event.insights.traffic}</b><span>Traffic</span></div><div className="mini lavender"><b>{event.insights.redemption}%</b><span>Redemption</span></div></div><div className="price"><span>Packages from</span><strong>{event.price}</strong></div></div>
-            </article>
+        <div className="heroPanel" aria-label="EventFloX local opportunity finder preview">
+          <div className="finderTop">
+            <div>
+              <span className="eyebrow">Opportunity Finder</span>
+              <h2>New Bubble Tea Shop</h2>
+              <p>Hoboken, NJ · Families and students</p>
+            </div>
+            <div className="zipBox">07030</div>
+          </div>
+          <div className="matchList">
+            {recommendedEvents.map((event) => (
+              <div className="matchRow" key={event.name}>
+                <div>
+                  <strong>{event.name}</strong>
+                  <span>{event.type} · {event.distance} · {event.audience}</span>
+                </div>
+                <b>{event.match}%</b>
+              </div>
+            ))}
+          </div>
+          <div className="couponPreview">
+            <div className="qr"><QrCode size={42} /></div>
+            <div>
+              <span className="eyebrow">Suggested campaign</span>
+              <h3>Buy One Get One Free</h3>
+              <p>Expected reach: 150 families · Expected claims: 60 · Estimated visits: 18</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="how" className="shell">
+        <div className="sectionTitle">
+          <span className="eyebrow">How it works</span>
+          <h2>Three steps from local event discovery to customer visits</h2>
+        </div>
+        <div className="stepGrid">
+          <article className="stepCard"><Store size={26} /><span>Step 1</span><h3>Tell us about your business</h3><p>Enter your ZIP code, business category, and target audience.</p></article>
+          <article className="stepCard"><MapPin size={26} /><span>Step 2</span><h3>Get matched with nearby events</h3><p>AI recommends schools, festivals, cultural events, family days, and local organizations with match scores.</p></article>
+          <article className="stepCard"><BarChart3 size={26} /><span>Step 3</span><h3>Track real results</h3><p>See coupon claims, redemptions, redemption rate, and estimated new customers in one clean dashboard.</p></article>
+        </div>
+      </section>
+
+      <section id="match" className="shell matchSection">
+        <div className="sectionTitle">
+          <span className="eyebrow">Example match</span>
+          <h2>A new bubble tea shop finds nearby family events in minutes</h2>
+          <p>Instead of guessing where to advertise, the business gets ranked local opportunities and a ready-to-launch offer.</p>
+        </div>
+        <div className="exampleGrid">
+          <div className="examplePanel">
+            <span className="eyebrow">Business profile</span>
+            <h3>New Bubble Tea Shop</h3>
+            <p>Location: Hoboken, NJ</p>
+            <p>Target audience: families, students, and weekend foot traffic</p>
+            <div className="tagRow"><span>ZIP 07030</span><span>Drinks</span><span>Family-friendly</span></div>
+          </div>
+          <div className="rankedList">
+            {recommendedEvents.map((event) => (
+              <div className="rankedItem" key={event.name}>
+                <div><strong>{event.name}</strong><span>{event.campaign}</span></div>
+                <b>{event.match}% Match</b>
+              </div>
+            ))}
+          </div>
+          <div className="campaignBox">
+            <TicketPercent size={28} />
+            <span className="eyebrow">Suggested campaign</span>
+            <h3>Buy One Get One Free</h3>
+            <div className="forecast"><span>150 Families</span><span>60 Claims</span><span>18 Visits</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="businesses" className="shell twoColumn">
+        <div className="sectionTitle">
+          <span className="eyebrow">For businesses</span>
+          <h2>Acquire customers without wasting money on broad ads</h2>
+          <p>EventFloX is built for restaurants, coffee shops, camps, clinics, tutoring centers, studios, and local services that want measurable community-driven growth.</p>
+        </div>
+        <div className="benefitList">
+          <p><CheckCircle2 size={18} />Reach nearby families</p>
+          <p><CheckCircle2 size={18} />Discover events you would never find manually</p>
+          <p><CheckCircle2 size={18} />Launch trackable coupon campaigns</p>
+          <p><CheckCircle2 size={18} />Measure actual customer visits</p>
+          <p><CheckCircle2 size={18} />Pay only when campaigns work</p>
+        </div>
+      </section>
+
+      <section id="organizers" className="shell twoColumn organizerBand">
+        <div className="sectionTitle">
+          <span className="eyebrow">For organizers</span>
+          <h2>Bring useful local perks to your attendees</h2>
+          <p>Organizers can connect their community with relevant neighborhood businesses while creating measurable value for every partner.</p>
+        </div>
+        <div className="benefitList">
+          <p><CheckCircle2 size={18} />Bring perks to attendees</p>
+          <p><CheckCircle2 size={18} />Attract local business partners</p>
+          <p><CheckCircle2 size={18} />Reduce cold outreach</p>
+          <p><CheckCircle2 size={18} />Build stronger community connections</p>
+          <p><CheckCircle2 size={18} />Create measurable partner value</p>
+        </div>
+      </section>
+
+      <section id="dashboard" className="shell">
+        <div className="sectionTitle">
+          <span className="eyebrow">ROI dashboard preview</span>
+          <h2>Track coupon performance and real customer visits</h2>
+        </div>
+        <div className="dashboardPreview">
+          <div className="metricGrid">
+            {roiMetrics.map((metric) => (
+              <div className="metricTile" key={metric.label}><strong>{metric.value}</strong><span>{metric.label}</span></div>
+            ))}
+          </div>
+          <div className="chartPanel">
+            <div className="chartHeader"><span>Campaign funnel</span><b>New Bubble Tea Shop</b></div>
+            <div className="funnel"><i style={{ width: "100%" }} /><i style={{ width: "57%" }} /><i style={{ width: "31%" }} /></div>
+            <div className="chartLabels"><span>Distributed</span><span>Claimed</span><span>Redeemed</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="shell pricingSection">
+        <div className="sectionTitle">
+          <span className="eyebrow">Business model</span>
+          <h2>Free to join. No monthly fees. No upfront costs.</h2>
+          <p>EventFloX only earns revenue when coupons are redeemed or qualified leads are generated. We succeed when local businesses get customers.</p>
+        </div>
+        <div className="feeGrid">
+          {successFees.map((fee) => (
+            <div className="feeItem" key={fee.business}><strong>{fee.business}</strong><b>{fee.fee}</b><span>{fee.basis}</span></div>
           ))}
         </div>
       </section>
 
-      <section id="insights" className="shell">
-        <div className="sectionTitle"><div className="eyebrow">Sponsor Performance Insights</div><h3>Historical organizer-reported data to help sponsors estimate local impact.</h3><p>These metrics are framed as historical averages and estimated impact, not guarantees. The goal is to make local sponsorship feel more measurable and decision-ready.</p></div>
-        <div className="insightWrap">
-          <div className="scoreCard"><div className="eyebrow">Sponsor Score</div><strong>{detailInsights.sponsorScore}<span>/100</span></strong><div className="bar"><i style={{width:`${detailInsights.sponsorScore}%`}} /></div><p>Higher than similar local events</p><div className="tagRow"><span>Historical Average</span><span>Organizer Reported</span><span>Estimated Impact</span></div></div>
-          <div className="insightGrid">
-            <div className="insight"><small>Historical Coupon Redemption Rate</small><b>{detailInsights.couponRedemptionRate}%</b><div className="bar sage"><i style={{width:`${detailInsights.couponRedemptionRate}%`}} /></div><p>35% historical coupon redemption rate</p></div>
-            <div className="insight"><small>Average Foot Traffic Generated</small><b>{detailInsights.avgSponsorTraffic}</b><p>15-25 estimated sponsor-driven visits</p></div>
-            <div className="insight"><small>Average Attendance</small><b>{detailInsights.avgAttendance}</b><p>Historical average attendance</p></div>
-            <div className="insight"><small>Coupon Claims</small><b>{detailInsights.couponClaims}</b><p>Average sponsor offer claims</p></div>
-            <div className="insight"><small>Past Sponsor Count</small><b>{detailInsights.pastSponsorCount}</b><p>Brands that sponsored prior editions</p></div>
-            <div className="insight"><small>Repeat Sponsor Rate</small><b>{detailInsights.repeatSponsorRate}%</b><div className="bar lavenderBar"><i style={{width:`${detailInsights.repeatSponsorRate}%`}} /></div><p>Returning sponsor signal</p></div>
-          </div>
-          <div className="categoryBox"><b>Best Sponsor Categories</b><p>Best for restaurants, tutoring centers, dental clinics, real estate agents, and local services.</p><div className="tagRow">{detailInsights.categories.map((category) => <span key={category}>{category}</span>)}</div></div>
-        </div>
+      <section id="start" className="shell finalCta">
+        <span className="badge"><Sparkles size={15} />Free During Beta</span>
+        <h2>Start With Your ZIP Code</h2>
+        <p>See what community events are happening around your business, then launch an offer you can actually measure.</p>
+        <div className="actions"><a className="btn primary" href="mailto:hello@eventflox.com?subject=Join%20the%20EventFloX%20Beta"><Search size={18} />Find Local Opportunities</a><a className="btn secondary" href="mailto:hello@eventflox.com?subject=Organizer%20Beta"><ArrowRight size={18} />Join the Beta</a></div>
       </section>
 
-      <section id="dashboards" className="shell"><div className="sectionTitle"><div className="eyebrow">Dashboards</div><h3>Three-role MVP: sponsor, organizer, admin</h3></div><div className="grid3"><div className="card panel"><h2>Sponsor HQ</h2><p>Saved events, active conversations, purchased packages, and AI recommendations.</p><div className="metric"><strong>$1.2k</strong><span>Purchased packages</span></div></div><div className="card panel"><h2>Organizer HQ</h2><p>Manage events, inquiries, orders, and Stripe payout status from one surface.</p><div className="metric"><strong>8</strong><span>Sponsor inquiries</span></div></div><div className="card panel"><h2>Admin</h2><p>Review event quality, approve packages, manage users, and watch disputes.</p><div className="metric"><strong>18</strong><span>Packages pending</span></div></div></div></section>
-
-      <section id="proof" className="shell"><div className="dashboard"><div className="card panel"><div className="eyebrow">Proof of Exposure</div><h3>Voucher pickup plus proof upload</h3><p>Digital voucher fulfillment keeps the platform light. After the event, organizers upload brand exposure photos and a social recap link for sponsor approval.</p><div className="actions"><button className="btn primary">Submit proof</button><button className="btn secondary">View voucher SL-92A84F13BC</button></div></div><div className="card panel"><h2>Status</h2><p>✓ Payment captured</p><p>✓ Voucher issued</p><p>○ Awaiting proof</p><p>○ Sponsor review</p></div></div></section>
-      <footer className="shell">SponsorLocal MVP · Sponsor local events with measurable results.</footer>
+      <footer className="shell">EventFloX · Discover community events. Launch offers. Track results.</footer>
     </main>
   );
 }
