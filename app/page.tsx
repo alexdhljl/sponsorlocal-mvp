@@ -146,6 +146,7 @@ export default function Home() {
             <span className="eyebrow">Suggested campaign</span>
             <h3>Buy One Get One Free</h3>
             <div className="forecast"><span>150 Families</span><span>60 Claims</span><span>18 Visits</span></div>
+            <div className="couponTags">{couponIdeas.map((idea) => <span key={idea}>{idea}</span>)}</div>
           </div>
         </div>
       </section>
